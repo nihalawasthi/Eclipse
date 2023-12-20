@@ -1,5 +1,3 @@
-s
-
 omkar
  is 
 great
