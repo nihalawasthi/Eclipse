@@ -1,3 +1,3 @@
-sromkar
+omkar
  is 
 great
