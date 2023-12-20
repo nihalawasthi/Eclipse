@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    <title>Eclipse of Eternity: The Aetherium Chronicles</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <button id="startButton" onclick="startgame()">Start Game</button>
+        <script>
+            let game;
+
+            function startgame() {
+                window.location.href = 'game';
+            }
+                const gameConfig = {
+                    type: Phaser.AUTO,
+                    width: 1255,
+                    height: 625,
+                    physics: {
+                        default: 'arcade',
+                        arcade: {
+                            gravity: { y: 200 }
+                        }
+                    }
+                };
+
+                game = new Phaser.Game(gameConfig);
+
+                class Home extends Phaser.Scene {
+                    preload() {
+                        this.load.setBaseURL('');
+
+                        this.load.image('Background', 'img/3.jpg');
+                        this.load.image('logo', 'img/logo.png');
+                        this.load.image('red', 'assets/particles/red.png');
+                    }
+
+                    create() {
+                        const bg = this.add.image(625, 315, 'Background');
+                        bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+
+
+                        const particles = this.add.particles('red', {
+                            speed: 100,
+                            scale: { start: 1, end: 0 },
+                            blendMode: 'ADD'
+                        });
+
+                        const logo = this.physics.add.image(2, 25, 'logo');
+                        logo.setScale(1);
+
+                        logo.setVelocity(100, 200);
+                        logo.setBounce(1, 1);
+                        logo.setCollideWorldBounds(true);
+
+                        particles.createEmitter({
+                            follow: logo,
+                            speed: 100,
+                            scale: { start: 1, end: 0 },
+                            blendMode: 'ADD'
+                        });
+                    }
+                }
+
+                game.scene.add('Home', Home);
+                game.scene.start('Home');
+
+        </script>
+    </div>
+</body>
+
+</html>

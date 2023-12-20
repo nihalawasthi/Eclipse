@@ -1,0 +1,20 @@
+#game-container {
+    width: 800px;
+    height: 400px;
+    border: 1px solid black;
+    position: relative;
+  }
+  
+  #player {
+    width: 100px;
+    height: 150px;
+    background-image: url('player.png');
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  button {
+    margin: 5px;
+  }
+  
